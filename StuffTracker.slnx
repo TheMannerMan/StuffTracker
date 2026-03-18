@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/StuffTracker.API/StuffTracker.API.csproj" />
+    <Project Path="src/StuffTracker.Application/StuffTracker.Application.csproj" Id="d0b2968f-11fe-48d0-b191-0166e2731149" />
+    <Project Path="src/StuffTracker.Domain/StuffTracker.Domain.csproj" />
+    <Project Path="src/StuffTracker.Infrastructure/StuffTracker.Infrastructure.csproj" />
+  </Folder>
+</Solution>
