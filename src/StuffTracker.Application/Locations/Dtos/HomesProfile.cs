@@ -25,5 +25,7 @@ public class HomesProfile : Profile
               .ForMember(dest => dest.Parent, opt => opt.Ignore())
               .ForMember(dest => dest.Children, opt => opt.Ignore())
               .ForMember(dest => dest.IsDeleted, opt => opt.Ignore());
+
+        CreateMap<Location, HomeDto>();
     }
 }      
