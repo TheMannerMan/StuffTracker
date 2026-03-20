@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 using StuffTracker.Application.Locations.Commands.CreateHome;
-using StuffTracker.Application.Locations.Queries.GetHome;
+using StuffTracker.Application.Locations.Queries.GetHomeById;
 
 namespace StuffTracker.API.Controllers;
 

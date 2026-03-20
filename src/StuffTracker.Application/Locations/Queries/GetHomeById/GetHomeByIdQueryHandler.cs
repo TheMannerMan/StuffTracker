@@ -11,7 +11,7 @@ using StuffTracker.Domain.Entities;
 using StuffTracker.Domain.Enums;
 using StuffTracker.Domain.Repositories;
 
-namespace StuffTracker.Application.Locations.Queries.GetHome;
+namespace StuffTracker.Application.Locations.Queries.GetHomeById;
 
 internal class GetHomeByIdQueryHandler(ILocationsRepository locationsRepository, IMapper mapper) : IRequestHandler<GetHomeByIdQuery, HomeDto>
 {
