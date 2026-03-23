@@ -10,4 +10,5 @@ public interface ILocationsRepository
 {
     Task<Guid> Create(Location entity);
     Task<Location?> GetLocationById(Guid id);
+    Task<IEnumerable<Location>> GetAllHomes();
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StuffTracker.Infrastructure.Persistance;
 
@@ -11,9 +12,11 @@ using StuffTracker.Infrastructure.Persistance;
 namespace StuffTracker.Infrastructure.Migrations
 {
     [DbContext(typeof(StuffTrackerDbContext))]
-    partial class StuffTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260323131049_AddHomeIdToLocation")]
+    partial class AddHomeIdToLocation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

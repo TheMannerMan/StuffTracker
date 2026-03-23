@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using StuffTracker.Domain.Entities;
+using StuffTracker.Domain.Enums;
 using StuffTracker.Domain.Repositories;
 using StuffTracker.Infrastructure.Persistance;
 
@@ -19,5 +20,12 @@ internal class LocationsRepository(StuffTrackerDbContext dbContext) : ILocations
     {
         var location = await dbContext.Locations.FirstOrDefaultAsync(l => l.Id == id && !l.IsDeleted);
         return location;
+    }
+
+    public async Task<IEnumerable<Location>> GetAllHomes()
+    {
+        return await dbContext.Locations
+            .Where(l => l.LocationType == LocationType.Home && !l.IsDeleted)
+            .ToListAsync();
     }
 }

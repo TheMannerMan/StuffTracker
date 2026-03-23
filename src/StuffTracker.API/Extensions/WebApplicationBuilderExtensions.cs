@@ -13,8 +13,7 @@ public static class WebApplicationBuilderExtensions
     {
         builder.Services.AddOpenApi();
 
-    builder.Services.AddControllers();
+        builder.Services.AddControllers();
     }
 }
 
- 

@@ -21,6 +21,9 @@ public class Location
     // Points to the parent in the hierarchy. Null if this is a Home node.
     public Guid? ParentId { get; set; }
 
+    // Denormalized FK to the root Home node. Equals own Id for Home nodes, copied from parent for all child locations.
+    public Guid HomeId { get; set; }
+
     // Navigation property upward — EF Core populates this automatically if included in your query
     public Location? Parent { get; set; }
 

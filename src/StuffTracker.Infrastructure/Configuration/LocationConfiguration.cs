@@ -29,5 +29,12 @@ public class LocationConfiguration : IEntityTypeConfiguration<Location>
             .OnDelete(DeleteBehavior.Restrict); // förhindrar cascade delete
 
         builder.HasIndex(l => l.ParentId);
+
+        builder.HasOne<Location>()
+            .WithMany()
+            .HasForeignKey(l => l.HomeId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasIndex(l => l.HomeId);
     }
 }
