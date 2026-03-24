@@ -3,7 +3,7 @@
 using StuffTracker.Domain.Entities;
 using StuffTracker.Domain.Enums;
 using StuffTracker.Domain.Repositories;
-using StuffTracker.Infrastructure.Persistance;
+using StuffTracker.Infrastructure.Persistence;
 
 namespace StuffTracker.Infrastructure.Repositories;
 

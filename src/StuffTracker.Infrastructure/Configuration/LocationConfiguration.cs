@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StuffTracker.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using StuffTracker.Domain.Constants;
 
 namespace StuffTracker.Infrastructure.Configuration;
 
@@ -15,10 +13,10 @@ public class LocationConfiguration : IEntityTypeConfiguration<Location>
 
         builder.Property(l => l.Name)
             .IsRequired()
-            .HasMaxLength(200);
+            .HasMaxLength(LocationConstants.LocationNameMaxLength);
 
         builder.Property(l => l.Description)
-            .HasMaxLength(500);
+            .HasMaxLength(LocationConstants.LocationDescriptionMaxLength);
 
         builder.Property(l => l.LocationType)
             .HasConversion<string>();  // sparas som text i databasen

@@ -3,10 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using StuffTracker.Domain.Repositories;
-using StuffTracker.Infrastructure.Persistance;
+using StuffTracker.Infrastructure.Persistence;
 using StuffTracker.Infrastructure.Repositories;
 
 using System;
+using System.Collections.Generic;
 using System.Collections.Generic;
 using System.Text;
 

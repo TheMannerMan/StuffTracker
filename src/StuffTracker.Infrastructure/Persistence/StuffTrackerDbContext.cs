@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StuffTracker.Infrastructure.Persistance;
+namespace StuffTracker.Infrastructure.Persistence;
 
 internal class StuffTrackerDbContext(DbContextOptions<StuffTrackerDbContext> options) : DbContext(options)
 {
