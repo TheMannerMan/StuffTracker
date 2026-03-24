@@ -24,14 +24,14 @@ internal class LocationsRepository(StuffTrackerDbContext dbContext) : ILocations
 
     public async Task<Location?> GetLocationById(Guid id)
     {
-        var location = await dbContext.Locations.FirstOrDefaultAsync(l => l.Id == id && !l.IsDeleted);
+        var location = await dbContext.Locations.FirstOrDefaultAsync(l => l.Id == id);
         return location;
     }
 
     public async Task<IEnumerable<Location>> GetAllHomes()
     {
         return await dbContext.Locations
-            .Where(l => l.LocationType == LocationType.Home && !l.IsDeleted)
+            .Where(l => l.LocationType == LocationType.Home)
             .ToListAsync();
     }
 }
