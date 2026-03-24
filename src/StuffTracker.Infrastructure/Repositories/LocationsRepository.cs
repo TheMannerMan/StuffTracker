@@ -16,6 +16,12 @@ internal class LocationsRepository(StuffTrackerDbContext dbContext) : ILocations
         return entity.Id;
     }
 
+    public async Task CreateRange(IEnumerable<Location> entities)
+    {
+        dbContext.Locations.AddRange(entities);
+        await dbContext.SaveChangesAsync();
+    }
+
     public async Task<Location?> GetLocationById(Guid id)
     {
         var location = await dbContext.Locations.FirstOrDefaultAsync(l => l.Id == id && !l.IsDeleted);

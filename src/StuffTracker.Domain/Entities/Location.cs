@@ -37,4 +37,31 @@ public class Location
     public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
+
+    public static (Location home, Location unsorted) CreateHome(string name, string? description = null)
+    {
+        var home = new Location
+        {
+            Id = Guid.NewGuid(),
+            Name = name,
+            Description = description,
+            LocationType = LocationType.Home,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+        home.HomeId = home.Id;
+
+        var unsorted = new Location
+        {
+            Id = Guid.NewGuid(),
+            Name = "Unsorted",
+            LocationType = LocationType.Unsorted,
+            ParentId = home.Id,
+            HomeId = home.Id,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        return (home, unsorted);
+    }
 }
