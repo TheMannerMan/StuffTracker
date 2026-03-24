@@ -25,6 +25,7 @@ if (app.Environment.IsDevelopment())
 
 // Configure the HTTP request pipeline.
 
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
 
 //app.UseAuthorization();
