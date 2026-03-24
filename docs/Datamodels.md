@@ -46,7 +46,7 @@ Represents any physical place in a hierarchy. Uses a self-referencing structure 
 | `Description` | string | Yes | Optional free-text comment, e.g. "Cabinet above the stove, left side" |
 | `ImageUrl` | string | Yes | Populated in Step 2 when image upload is implemented |
 | `LocationType` | enum | No  | See values below |
-| `ParentId` | GUID | Yes | FK → Location. `null` only for `Home` and `Unsorted` nodes |
+| `ParentId` | GUID | Yes | FK → Location. `null` only for `Home` nodes. |
 | `IsDeleted` | bool | No  | Soft delete flag |
 | `DeletedAt` | DateTime | Yes | Set when soft deleted |
 | `CreatedAt` | DateTime | No  |     |
@@ -60,9 +60,9 @@ Represents any physical place in a hierarchy. Uses a self-referencing structure 
 | `Room` | A room inside a home, e.g. "Living Room" | `Home` |
 | `Storage` | A storage unit, e.g. cabinet, toolbox, shelf | `Room` or `Storage` |
 | `Position` | A specific spot, e.g. "Top shelf", "Left drawer" | `Storage` |
-| `Unsorted` | System-generated catch-all node per user | None (`ParentId` is null) |
+| `Unsorted` | System-generated catch-all node per home | `Home` |
 
-> **Unsorted node:** Created automatically on user registration. Cannot be edited or deleted by the user. Items land here when: (1) added without a location, or (2) their assigned location is deleted.
+> **Unsorted node:** Created automatically when a home is created. Scoped to the home — shared by all members. Cannot be edited or deleted by the user. Items land here when: (1) added without a location, or (2) their assigned location is deleted.
 > 
 > **Storage nesting:** `Storage → Storage` is intentionally allowed to support real-world cases like a cabinet containing a drawer containing a compartment.
 
