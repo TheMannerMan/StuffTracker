@@ -19,12 +19,12 @@ public class LocationConfiguration : IEntityTypeConfiguration<Location>
             .HasMaxLength(LocationConstants.LocationDescriptionMaxLength);
 
         builder.Property(l => l.LocationType)
-            .HasConversion<string>();  // sparas som text i databasen
+            .HasConversion<string>();  //saved as text in the database
 
         builder.HasOne(l => l.Parent)
             .WithMany(l => l.Children)
             .HasForeignKey(l => l.ParentId)
-            .OnDelete(DeleteBehavior.Restrict); // förhindrar cascade delete
+            .OnDelete(DeleteBehavior.Restrict); // prevents cascade delete 
 
         builder.HasIndex(l => l.ParentId);
 
