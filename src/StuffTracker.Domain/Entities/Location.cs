@@ -1,4 +1,5 @@
 ﻿using StuffTracker.Domain.Enums;
+using StuffTracker.Domain.Exceptions;
 
 using System;
 using System.Collections.Generic;
@@ -70,27 +71,27 @@ public class Location
     {
         if (parent.LocationType == LocationType.Unsorted)
         {
-            throw new ArgumentException("Cannot create a location under the Unsorted location.");
+            throw new BusinessRuleException("Cannot create a location under the Unsorted location.");
         }
 
         if (locationType == LocationType.Home || locationType == LocationType.Unsorted)
         {
-            throw new ArgumentException("Invalid location type for creation. Use CreateHome method to create Home and Unsorted locations.");
+            throw new BusinessRuleException("Invalid location type for creation. Use CreateHome method to create Home and Unsorted locations.");
         }
 
         if (parent.LocationType == LocationType.Room && locationType != LocationType.Storage)
         {
-            throw new ArgumentException("Cannot create a Room under another Room. Rooms can only be created under Home");
+            throw new BusinessRuleException("Can only create Storage locations directly under a Room.");
         }
 
         if (parent.LocationType == LocationType.Storage && locationType != LocationType.Storage)
         {
-            throw new ArgumentException("You can only create another Storage under a Storage location");
+            throw new BusinessRuleException("You can only create another Storage under a Storage location");
         }
 
         if (parent.LocationType == LocationType.Home && locationType != LocationType.Room)
         {
-            throw new ArgumentException("Can only create a Room directly under a Home.");
+            throw new BusinessRuleException("Can only create a Room directly under a Home.");
         }
 
         var newLocation = new Location

@@ -12,7 +12,7 @@ namespace StuffTracker.Domain.Constants
         public const int LocationNameMaxLength = 100;
         public const int LocationDescriptionMaxLength = 500;
 
-        public static readonly List<LocationType> validLocationTypesToBeCreated = new List<LocationType>()
+        public static readonly List<LocationType> ValidLocationTypesToBeCreated = new List<LocationType>()
         {
             LocationType.Storage,
             LocationType.Room

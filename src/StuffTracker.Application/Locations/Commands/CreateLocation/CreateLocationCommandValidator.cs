@@ -9,14 +9,8 @@ namespace StuffTracker.Application.Locations.Commands.CreateLocation;
 
 public class CreateLocationCommandValidator : AbstractValidator<CreateLocationCommand>
 {
-    private readonly ILocationsRepository _locationsRepository;
-
-    private readonly List<LocationType> validLocationTypes;
-
-    public CreateLocationCommandValidator(ILocationsRepository locationsRepository)
+    public CreateLocationCommandValidator()
     {
-        
-        _locationsRepository = locationsRepository;
 
         RuleFor(x => x.Name)
             .NotEmpty().WithMessage("Name is required.")
@@ -27,7 +21,7 @@ public class CreateLocationCommandValidator : AbstractValidator<CreateLocationCo
 
             
         RuleFor(x => x.LocationType)
-            .Must(LocationConstants.validLocationTypesToBeCreated.Contains)
+            .Must(LocationConstants.ValidLocationTypesToBeCreated.Contains)
             .WithMessage("Invalid location type. Please choose from the valid location types.");
 
        RuleFor(x => x.ParentId)
