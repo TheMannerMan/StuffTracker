@@ -23,11 +23,6 @@ public class HomesController(IMediator _mediator) : ControllerBase
     public async Task<IActionResult> GetHomeById([FromRoute] Guid id)
     {
         var home = await _mediator.Send(new GetHomeByIdQuery(id));
-        if (home is null)
-        {
-            return NotFound();
-        }
-
         return Ok(home);
     }
 
