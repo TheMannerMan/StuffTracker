@@ -16,7 +16,7 @@ public class HomesController(IMediator _mediator) : ControllerBase
     public async Task<IActionResult> CreateHome(CreateHomeCommand command)
     {
         Guid id = await _mediator.Send(command);
-        return Ok(id);
+        return CreatedAtAction(nameof(GetHomeById), new { id }, null);
     }
 
     [HttpGet("{id}")]
