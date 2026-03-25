@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.OpenApi;
+using System.Text.Json.Serialization;
 
 using StuffTracker.API.Exceptions;
 
@@ -11,7 +12,9 @@ public static class WebApplicationBuilderExtensions
         builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
         builder.Services.AddProblemDetails();
 
-        builder.Services.AddControllers();
+        builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
     }
 }
 

@@ -5,6 +5,5 @@ public enum LocationType
     Home,
     Room,
     Storage,
-    Position,
     Unsorted
 }
