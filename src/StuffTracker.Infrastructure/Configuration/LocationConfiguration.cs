@@ -34,5 +34,7 @@ public class LocationConfiguration : IEntityTypeConfiguration<Location>
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasIndex(l => l.HomeId);
+        
+        builder.HasQueryFilter(l => !l.IsDeleted);
     }
 }

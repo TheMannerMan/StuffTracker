@@ -14,6 +14,5 @@ internal class StuffTrackerDbContext(DbContextOptions<StuffTrackerDbContext> opt
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(StuffTrackerDbContext).Assembly);
-        modelBuilder.Entity<Location>().HasQueryFilter(l => !l.IsDeleted);
     }
 }
