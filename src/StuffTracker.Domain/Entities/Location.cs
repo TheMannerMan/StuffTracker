@@ -21,6 +21,9 @@ public class Location
     // Points to the parent in the hierarchy. Null if this is a Home node.
     public Guid? ParentId { get; set; }
 
+    // Denormalized FK to the root Home node. Equals own Id for Home nodes, copied from parent for all child locations.
+    public Guid HomeId { get; set; }
+
     // Navigation property upward — EF Core populates this automatically if included in your query
     public Location? Parent { get; set; }
 
@@ -34,4 +37,31 @@ public class Location
     public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
+
+    public static (Location home, Location unsorted) CreateHome(string name, string? description = null)
+    {
+        var home = new Location
+        {
+            Id = Guid.NewGuid(),
+            Name = name,
+            Description = description,
+            LocationType = LocationType.Home,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+        home.HomeId = home.Id;
+
+        var unsorted = new Location
+        {
+            Id = Guid.NewGuid(),
+            Name = "Unsorted",
+            LocationType = LocationType.Unsorted,
+            ParentId = home.Id,
+            HomeId = home.Id,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        return (home, unsorted);
+    }
 }
