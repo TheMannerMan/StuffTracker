@@ -12,4 +12,5 @@ public interface ILocationsRepository
     Task CreateRange(IEnumerable<Location> entities);
     Task<Location?> GetLocationById(Guid id);
     Task<IEnumerable<Location>> GetAllHomes();
+    Task<IEnumerable<Location>> GetLocationsForHome(Guid homeId);
 }

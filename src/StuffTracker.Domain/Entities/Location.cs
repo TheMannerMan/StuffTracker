@@ -69,6 +69,9 @@ public class Location
 
     public static Location CreateLocation(string name, string? description, LocationType locationType, Location parent)
     {
+
+        // TODO: From a SRP perspective, do we want to move this validation logic into a separate LocationFactory or LocationService class?
+
         if (parent.LocationType == LocationType.Unsorted)
         {
             throw new BusinessRuleException("Cannot create a location under the Unsorted location.");

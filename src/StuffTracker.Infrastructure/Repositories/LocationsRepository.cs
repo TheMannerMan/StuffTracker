@@ -28,10 +28,21 @@ internal class LocationsRepository(StuffTrackerDbContext dbContext) : ILocations
         return location;
     }
 
+    //TODO: vad är syftet med deb här? Rimligtvis så ska man hämta alla hem för en specifik användare? Kontrollera
     public async Task<IEnumerable<Location>> GetAllHomes()
     {
         return await dbContext.Locations
             .Where(l => l.LocationType == LocationType.Home)
             .ToListAsync();
+    }
+
+    public async Task<IEnumerable<Location>> GetLocationsForHome(Guid homeId)
+    {
+        var locations = await dbContext.Locations
+            .AsNoTracking()
+            .Where(l => l.HomeId == homeId)
+            .ToListAsync();
+
+        return locations;
     }
 }
