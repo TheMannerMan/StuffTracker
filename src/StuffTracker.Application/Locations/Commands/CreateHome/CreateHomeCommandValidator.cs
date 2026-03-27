@@ -13,7 +13,5 @@ public class CreateHomeCommandValidator : AbstractValidator<CreateHomeCommand>
             .MaximumLength(LocationConstants.LocationNameMaxLength).WithMessage($"Name cannot exceed {LocationConstants.LocationNameMaxLength} characters.");
         RuleFor(x => x.Description)
             .MaximumLength(LocationConstants.LocationDescriptionMaxLength).WithMessage($"Description cannot exceed {LocationConstants.LocationDescriptionMaxLength} characters.");
-
-        
     }
 }

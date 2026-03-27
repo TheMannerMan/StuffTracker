@@ -19,4 +19,3 @@ public static class WebApplicationBuilderExtensions
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
     }
 }
-
