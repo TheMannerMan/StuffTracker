@@ -24,8 +24,10 @@ Appen svarar på frågan: **"Var ligger min [sak]?"**
 ### Platshierarki
 
 ```
-Hem → Rum → Förvaringsplats → Specifik position
+Hem → Rum → Förvaringsplats → Förvaringsplats → ...
 ```
+
+Förvaringsplatser kan nästlas godtyckligt djupt för att modellera verklighetens struktur.
 
 Exempel:
 
@@ -206,3 +208,4 @@ API:ts OpenAPI-spec finns typiskt på `/openapi/v1.json` när applikationen kör
 
 - Restaurants_WebApi (referensimplementation): https://github.com/TheMannerMan/Restaurants_WebApi
 - Denna fil skapad: 2026-03-18
+- Senast uppdaterad: 2026-03-25 (Position borttaget ur LocationType — täcks av Storage-nesting)

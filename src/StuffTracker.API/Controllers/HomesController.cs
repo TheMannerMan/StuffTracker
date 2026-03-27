@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 using StuffTracker.Application.Locations.Commands.CreateHome;
+using StuffTracker.Application.Locations.Commands.CreateLocation;
 using StuffTracker.Application.Locations.Queries.GetHomeById;
 using StuffTracker.Application.Locations.Queries.GetHomes;
 
@@ -32,4 +33,12 @@ public class HomesController(IMediator _mediator) : ControllerBase
         var homes = await _mediator.Send(new GetHomesQuery());
         return Ok(homes);
     }
+
+    [HttpPost("locations")]
+    public async Task<IActionResult> CreateLocation(CreateLocationCommand command)
+    {
+        var newLocationId = await _mediator.Send(command);
+        return Created();
+    }
+
 }

@@ -1,4 +1,6 @@
 ﻿using StuffTracker.Domain.Enums;
+using StuffTracker.Domain.Exceptions;
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -63,5 +65,47 @@ public class Location
         };
 
         return (home, unsorted);
+    }
+
+    public static Location CreateLocation(string name, string? description, LocationType locationType, Location parent)
+    {
+        if (parent.LocationType == LocationType.Unsorted)
+        {
+            throw new BusinessRuleException("Cannot create a location under the Unsorted location.");
+        }
+
+        if (locationType == LocationType.Home || locationType == LocationType.Unsorted)
+        {
+            throw new BusinessRuleException("Invalid location type for creation. Use CreateHome method to create Home and Unsorted locations.");
+        }
+
+        if (parent.LocationType == LocationType.Room && locationType != LocationType.Storage)
+        {
+            throw new BusinessRuleException("Can only create Storage locations directly under a Room.");
+        }
+
+        if (parent.LocationType == LocationType.Storage && locationType != LocationType.Storage)
+        {
+            throw new BusinessRuleException("You can only create another Storage under a Storage location");
+        }
+
+        if (parent.LocationType == LocationType.Home && locationType != LocationType.Room)
+        {
+            throw new BusinessRuleException("Can only create a Room directly under a Home.");
+        }
+
+        var newLocation = new Location
+        {
+            Id = Guid.NewGuid(),
+            Name = name,
+            Description = description,
+            LocationType = locationType,
+            ParentId = parent.Id,
+            HomeId = parent.HomeId,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        return newLocation;
     }
 }
