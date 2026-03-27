@@ -6,6 +6,7 @@ using StuffTracker.Application.Locations.Commands.CreateHome;
 using StuffTracker.Application.Locations.Commands.CreateLocation;
 using StuffTracker.Application.Locations.Queries.GetHomeById;
 using StuffTracker.Application.Locations.Queries.GetHomes;
+using StuffTracker.Application.Locations.Queries.GetLocationsForHome;
 
 namespace StuffTracker.API.Controllers;
 

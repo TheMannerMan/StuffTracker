@@ -1,19 +1,40 @@
 @StuffTracker.API_HostAddress = https://localhost:7115
 
-GET {{StuffTracker.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
 ###
 
 POST {{StuffTracker.API_HostAddress}}/api/locations
 Content-Type: application/json
 {
-  "Name": "Test home",
-  "Description": "Test description"
+  "Name": "Test home 27 march",
+  "Description": "Test description 27 march"
 }
 
 ###
 
-GET {{StuffTracker.API_HostAddress}}/api/locations/homes/70f355e6-b2fb-482b-ba30-25332dc190f1
+GET {{StuffTracker.API_HostAddress}}/api/homes/a2134850-0c62-4848-b943-2c843f42e88e
+
+###
+
+GET {{StuffTracker.API_HostAddress}}/api/homes
+
+###
+
+POST {{StuffTracker.API_HostAddress}}/api/homes/locations
+Content-Type: application/json
+
+{
+  "Name": "Storage 1",
+  "Description": "Rooms test 27 march",
+  "ParentId": "b261cfe0-1342-4972-b48f-3297c5c75888",
+  "LocationType": "Storage"
+}
+
+###
+
+GET {{StuffTracker.API_HostAddress}}/api/homes/a2134850-0c62-4848-b943-2c843f42e88e
+
+###
+
+GET {{StuffTracker.API_HostAddress}}/api/homes/a2134850-0c62-4848-b943-2c843f42e88e/locations
 
 ###
