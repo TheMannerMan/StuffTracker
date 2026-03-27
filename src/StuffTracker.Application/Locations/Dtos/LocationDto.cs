@@ -9,5 +9,4 @@ public class LocationDto
     public string? Description { get; set; }
     public LocationType LocationType { get; set; }
     public Guid? ParentId { get; set; }
-    public List<LocationDto> Children { get; set; } = [];
 }
