@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using StuffTracker.Application.Locations.Commands.CreateHome;
 using StuffTracker.Application.Locations.Commands.CreateLocation;
+using StuffTracker.Application.Locations.Dtos;
 using StuffTracker.Application.Locations.Queries.GetHomeById;
 using StuffTracker.Application.Locations.Queries.GetHomes;
 using StuffTracker.Application.Locations.Queries.GetLocationsForHome;
@@ -35,6 +36,8 @@ public class HomesController(IMediator _mediator) : ControllerBase
         return Ok(homes);
     }
 
+
+    // TODO: refactor this too {homeId}/locations
     [HttpPost("locations")]
     public async Task<IActionResult> CreateLocation(CreateLocationCommand command)
     {
@@ -49,6 +52,13 @@ public class HomesController(IMediator _mediator) : ControllerBase
     {
         var locations = await _mediator.Send(new GetLocationsForHomeQuery(id));
         return Ok(locations);
+    }
+
+    [HttpGet("{homeId}/locations/{locationId}")] // TODO: Should this endpoint be in this controller?
+    public async Task<IActionResult> GetLocationById([FromRoute] Guid homeId, [FromRoute] Guid locationId)
+    {
+        LocationDto location = await _mediator.Send(new GetLocationByIdQuery(homeId,locationId));
+        return Ok(location);
     }
 
 
